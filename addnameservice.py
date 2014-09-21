@@ -16,23 +16,17 @@ class nameservice:
         self.nnconf= HadoopConf(self.namenodefile) #将配置文件转化成字典格式如下: {'name':{'value':value,'description':desc}}
         log.info('getting namenodefile' + self.namenodefile)
         dt = self.nnconf.get()
-        #获取ns名称
+        self.nss = {}
+        #获取ns名称,以及对应的namenode名称
         if dt.get('dfs.nameservices',None) is not None:
-            self.nss = dt['dfs.nameservices']['value'].split(',')
-        else:
-            self.nss = []
-        #获取目前的namenodes
-        if 
-
+            for x in dt['dfs.nameservices']['value'].split(','):
+                self.nss[x] = dt.get('dfs.ha.namenodes'+'.'+x,None)['value'].split('') if dt.get('dfs.ha.namenodes'+'.'+x,None) is not None else []
+        
 
     def addnameservice(nameservice,namenode1,namenode2):
         pass
 
-class namenode(object):
-         """docstring for namenode"""
-         def __init__(self, arg):
-             super(namenode, self).__init__()
-             self.arg = arg
+
                   
 
 if __name__ == "__main__":
