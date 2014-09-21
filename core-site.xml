@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<configuration>
+    <property>
+        <name>file.replication</name>
+        <value>1</value>
+    </property>
+    <property>
+        <name>fs.defaultFS</name>
+        <value>hdfs://jeanlyn:9000</value>
+        <description>In case you do not want to use the default scheduler</description>
+    </property>
+</configuration>

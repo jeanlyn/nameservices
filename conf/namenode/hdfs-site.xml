@@ -1,0 +1,132 @@
+<configuration>
+<property>
+  <name>dfs.nameservices</name>
+  <value>ns1,ns2</value>
+</property>
+<property>
+  <name>dfs.ha.namenodes.ns1</name>
+  <value>nn1,nn2</value> 
+</property>
+<property>
+  <name>dfs.namenode.rpc-address.ns1.nn1</name>
+  <value>BJHC-BIGDATA-TEST-17862.jd.com:8020</value>
+</property>
+<property>
+  <name>dfs.namenode.rpc-address.ns1.nn2</name>
+  <value>BJHC-BIGDATA-TEST-17863.jd.com:8020</value>
+</property>
+<property>
+  <name>dfs.namenode.http-address.ns1.nn1</name>
+  <value>BJHC-BIGDATA-TEST-17862.jd.com:50070</value>
+</property>
+<property>
+  <name>dfs.namenode.http-address.ns1.nn2</name>
+  <value>BJHC-BIGDATA-TEST-17863.jd.com:50070</value>
+</property>
+<!---->
+<property>
+  <name>dfs.ha.namenodes.ns2</name>
+  <value>nn3,nn4</value>
+</property>
+<property>
+  <name>dfs.namenode.rpc-address.ns2.nn3</name>
+  <value>BJHC-BIGDATA-TEST-17865.jd.com:8020</value>
+</property>
+<property>
+  <name>dfs.namenode.rpc-address.ns2.nn4</name>
+  <value>BJHC-BIGDATA-TEST-17866.jd.com:8020</value>
+</property>
+<property>
+  <name>dfs.namenode.http-address.ns2.nn3</name>
+  <value>BJHC-BIGDATA-TEST-17865.jd.com:50070</value>
+</property>
+<property>
+  <name>dfs.namenode.http-address.ns2.nn4</name>
+  <value>BJHC-BIGDATA-TEST-17866.jd.com:50070</value>
+</property>
+<!---->
+<property>
+  <name>dfs.replication</name>
+  <value>2</value>
+</property>
+<property>
+  <name>dfs.namenode.shared.edits.dir</name>
+  <value>qjournal://BJHC-BIGDATA-TEST-17867.jd.com:8485/ns1</value>
+</property>
+<property>
+  <name>dfs.journalnode.edits.dir</name>
+  <value>/data0/journal/data</value>
+</property>
+<property>
+  <name>dfs.client.failover.proxy.provider.ns1</name> 
+  <value>org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider</value>
+</property>
+<!--
+<property>
+  <name>dfs.client.failover.proxy.provider.ns2</name> 
+  <value>org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider</value>
+</property>
+-->
+<property>
+  <name>dfs.ha.fencing.methods</name>
+  <value>sshfence</value>
+</property>
+<property>
+  <name>dfs.ha.fencing.ssh.private-key-files</name>
+  <value>/home/hadp/.ssh/id_rsa</value>
+</property>
+<property>
+  <name>dfs.ha.fencing.ssh.connect-timeout</name>
+  <value>30000</value>
+</property>
+<property>
+  <name>dfs.ha.automatic-failover.enabled</name>
+  <value>true</value>
+</property>
+<property>
+  <name>dfs.namenode.name.dir</name>
+  <value>/data0/nn</value>
+</property>
+<property>
+  <name>dfs.blocksize</name>
+  <value>134217728</value>
+</property>
+<property>
+  <name>dfs.datanode.du.reserved</name>
+  <value>536870912</value>
+</property>
+<property>
+  <name>dfs.namenode.handler.count</name>
+  <value>100</value>
+</property>
+<property>
+  <name>dfs.datanode.max.transfer.threads</name>
+  <value>65536</value>
+</property>
+<property>
+  <name>dfs.datanode.balance.bandwidthPerSec</name> 
+  <value>10485760</value> 
+</property>
+<property>
+  <name>dfs.datanode.data.dir</name>
+  <value>/data0/dfs,/data1/dfs,/data2/dfs,/data3/dfs,/data4/dfs,/data5/dfs,/data6/dfs,/data7/dfs</value>
+</property>
+<property>
+  <name>dfs.hosts</name>
+  <value>/software/servers/hadoop-2.2.0/etc/hadoop/hosts/datanode_hosts</value>
+</property>
+<property>
+  <name>dfs.hosts.exclude</name>
+  <value>/software/servers/hadoop-2.2.0/etc/hadoop/hosts/exclude_datanode_hosts</value>
+</property>
+<property>
+  <name>dfs.checksum.type</name>
+  <value>CRC32</value>
+</property>
+
+<property> 
+    <name>dfs.webhdfs.enabled</name> 
+        <value>true</value> 
+</property> 
+
+</configuration>

@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<configuration>
+    <property>
+        <name>123</name>
+        <value>dsaf</value>
+        <description>dsad</description>
+    </property>
+</configuration>
