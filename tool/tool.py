@@ -13,7 +13,7 @@ def getlog(loggername,loggerfile):
     fh.setLevel(logging.DEBUG)
     # 再创建一个handler，用于输出到控制台
     ch = logging.StreamHandler()
-    ch.setLevel(logging.DEBUG)
+    ch.setLevel(logging.WARNING)
     # 定义handler的输出格式
     formatter = logging.Formatter('%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s')
     fh.setFormatter(formatter)

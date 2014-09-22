@@ -57,11 +57,12 @@ class HadoopConf():
     
     #将字典保存为xml文件
     def setdt(self,tree):
-        self.dt=tree
-        self.tree=ElementTree.ElementTree(Element(self.TagName,{}))
-        sroot=self.tree.getroot()
+        self.dt = tree
+        self.tree = ElementTree.ElementTree(Element(self.TagName,{}))
+        sroot = self.tree.getroot()
+        data = sorted(zip(tree.keys(),tree.values()))
         #print sroot
-        for k,v in zip(tree.keys(),tree.values()):
+        for k,v in data:
             name=Element("name")
             name.text=str(k)
             value=Element("value")
@@ -87,7 +88,8 @@ class HadoopConf():
 if __name__ =="__main__":
     tree=HadoopConf("core-site.xml")
     dt=tree.get()
-    #dt["123"]={"value":"dsaf","description":"dsad"}
+    dt["123"]={"value":"dsaf","description":"dsad"}
     #tree.setdt(dt)
-       
+    tree2=HadoopConf('core-site2.xml')   
     print dt
+    tree2.setdt(dt)

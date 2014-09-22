@@ -1,0 +1,1 @@
+2014-09-22 16:53:42,995 tool.py[line:34] ERROR there is someting wrong:/bin/rm: cannot remove ‘conf/ns3’: No such file or directory
