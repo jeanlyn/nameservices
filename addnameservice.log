@@ -38,3 +38,9 @@
 2014-09-22 17:09:08,617 addnameservice.py[line:28] INFO getting namenodefile: conf/namenode/hdfs-site.xml
 2014-09-22 17:09:08,618 addnameservice.py[line:136] ERROR global name 'hdfsconf' is not defined
 2014-09-22 17:09:32,633 addnameservice.py[line:28] INFO getting namenodefile: conf/namenode/hdfs-site.xml
+2014-09-23 10:49:53,070 addnameservice.py[line:28] INFO getting namenodefile: conf/namenode/hdfs-site.xml
+2014-09-23 10:49:57,034 addnameservice.py[line:28] INFO getting namenodefile: conf/namenode/hdfs-site.xml
+2014-09-23 20:03:06,446 addnameservice.py[line:37] INFO getting namenodefile: conf/namenode/hdfs-site.xml
+2014-09-23 20:03:09,055 addnameservice.py[line:37] INFO getting namenodefile: conf/namenode/hdfs-site.xml
+2014-09-23 20:03:18,395 addnameservice.py[line:37] INFO getting namenodefile: conf/namenode/hdfs-site.xml
+2014-09-23 20:03:18,395 addnameservice.py[line:80] WARNING 输入的参数有误！使用 addns -h 查看具体使用

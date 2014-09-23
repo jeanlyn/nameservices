@@ -34,5 +34,5 @@ def runshcommand(cmd):
         log.error("there is someting wrong:"+result)
         return None
     else:
-        return result.split('\n')
+        return result
 
