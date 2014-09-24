@@ -38,9 +38,11 @@ ssh $NAMENODE2 "mkdir -p $NAMENODE_DIR"
 #3.format zkfc and jn and namenode
 ssh $NAMENODE1 "$HDFS_COMMAND zkfc -formatZK"
 ssh $NAMENODE1 "$HDFS_COMMAND namenode -format -clusterId $CLUSTERID"
+ssh $NAMENODE1 "$HDOOP_DAEMON start namenode"
+
 ssh $NAMENODE2 "$HDFS_COMMAND namenode -bootstrapStandby"
 
 #4.启动namenode以及zkfc
-ssh $NAMENODE1 "$HDOOP_DAEMON start namenode"
+
 ssh $NAMENODE2 "$HDOOP_DAEMON start namenode"
 
