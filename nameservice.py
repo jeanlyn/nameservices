@@ -121,21 +121,23 @@ class nameservice:
             args = ' '.join([hadoopconfdir,scpfile]+hosts) #构造参数
             log.info('1.分发文件:'+scpfile)
             runshcommand('bash sshhandle.sh '+args)
-            #2.刷新所有的datanode，让datanode向新的namenode发送心跳
-            log.warn("addnameservice：2.刷新所有的datanode，让datanode向新的namenode发送心跳")
+            
+            #2.如果原来的集群有 namenode 的文件夹，则进行备份,并且format新的namenode
+            log.warn("addnameservice：2.备份原有的namnode文件夹")
+            namenodedir = hdfsconf['dfs.namenode.name.dir']['value']
+            args = ' '.join([self.hadoopdir,namenodedir,self.clusterid,namenode1,namenode2])
+            log.warn("runing commands: "+'bash wkforstartnn.sh '+args)
+            runinteractiveshell('bash wkforstartnn.sh '+args)
+            
+            #3.刷新所有的datanode，让datanode向新的namenode发送心跳
+            log.warn("addnameservice：3.刷新所有的datanode，让datanode向新的namenode发送心跳")
             datanodehosts=[]
             with open(datanodefile) as f:
                 datanodehosts = f.read().split('\n')
             datanoderpcprot = self.datanoderpcprot
             args = ' '.join([self.hadoopdir,datanoderpcprot]+datanodehosts)
             runshcommand('bash refreshnn.sh '+args)
-            #3.如果原来的集群有 namenode 的文件夹，则进行备份,并且format新的namenode
-            log.warn("addnameservice：3.备份原有的namnode文件夹")
-            namenodedir = hdfsconf['dfs.namenode.name.dir']['value']
-            args = ' '.join([self.hadoopdir,namenodedir,self.clusterid,namenode1,namenode2])
-            log.warn("runing commands: "+'bash wkforstartnn.sh '+args)
-            runinteractiveshell('bash wkforstartnn.sh '+args)
-            
+
             log.warn("add success!,you need to start zkfc manually")
 
 
