@@ -52,8 +52,8 @@ class nameservice:
             log.warn("nameservice 里面有空值，请检查配置！")
             return Process.FAIL
         hdfsconf = self.nnconf.get()
-        for nameservice,namenodes in zip(self.nss.keys(),self.nss.values()):
-            namenodehosts = [ hdfsconf['dfs.namenode.rpc-address.'+nameservice+'.'+x]['value'].split(':')[0].strip() for x in namenodes ]
+        for ns,nns in zip(self.nss.keys(),self.nss.values()):
+            namenodehosts = [ hdfsconf['dfs.namenode.rpc-address.'+ns+'.'+x]['value'].split(':')[0].strip() for x in nns ]
             if namenode1.strip() in namenodehosts or namenode2.strip() in namenodehosts:
                 log.warn(namenode1+"或者"+namenode2+"已经存在！")
                 return Process.FAIL
