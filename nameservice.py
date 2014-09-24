@@ -51,9 +51,10 @@ class nameservice:
         if [] in self.nss.values():
             log.warn("nameservice 里面有空值，请检查配置！")
             return Process.FAIL
-        if namenode1 in self.nss.values() or namenode2 in self.nss.values():
-            log.warn("namenode 已经存在！")
-            return Process.FAIL
+        for x in self.nss.values():
+            if namenode1 in x or namenode2 in x:
+                log.warn("namenode"+namenode1+"或者"+namenode2+" 已经存在！")
+                return Process.FAIL
         if self.nss.get(nameservice,None) is not None:
             log.warn("nameservice已经存在！")
             return Process.FAIL
