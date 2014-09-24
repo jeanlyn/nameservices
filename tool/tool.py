@@ -35,4 +35,14 @@ def runshcommand(cmd):
         return None
     else:
         return result
+#运行需要交互的shell
+def runinteractiveshell(cmd):
+    try:
+        result = os.system(cmd)
+        return result
+    except Exception, e:
+        log.error(e)
+    
+    
+
 

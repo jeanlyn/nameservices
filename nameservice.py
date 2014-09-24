@@ -125,7 +125,8 @@ class nameservice:
             log.warn("addnameservice：2.备份原有的namnode文件夹")
             namenodedir = hdfsconf['dfs.namenode.name.dir']['value']
             args = ' '.join([self.hadoopdir,namenodedir,self.clusterid,namenode1,namenode2])
-            runshcommand('bash wkforstartnn.sh '+args)
+            log.warn("runing commands: "+'bash wkforstartnn.sh '+args)
+            runinteractiveshell('bash wkforstartnn.sh '+args)
             #3.刷新所有的datanode，让datanode向新的namenode发送心跳
             log.warn("addnameservice：3.刷新所有的datanode，让datanode向新的namenode发送心跳")
             datanodehosts=[]
