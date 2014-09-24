@@ -26,9 +26,9 @@ HDFS_COMMAND=$HADOOP_HOME/bin/hdfs
 
 SUFFIX="`date +'%Y%m%d%H%M'`"
 #1.备份NAMENODE DIR
-ssh $NAMENODE1 "if [ -d $NAMENODE_DIR ];then cp -r ${NAMENODE_DIR} ${NAMENODE_DIR}_${SUFFIX}; fi"
+ssh $NAMENODE1 "if [ -d $NAMENODE_DIR ];then mv -r ${NAMENODE_DIR} ${NAMENODE_DIR}_${SUFFIX}; fi"
 
-ssh $NAMENODE2 "if [ -d $NAMENODE_DIR ];then cp -r ${NAMENODE_DIR} ${NAMENODE_DIR}_${SUFFIX}; fi"
+ssh $NAMENODE2 "if [ -d $NAMENODE_DIR ];then mv -r ${NAMENODE_DIR} ${NAMENODE_DIR}_${SUFFIX}; fi"
 
 #2.创建 NAMENODE_DIR
 ssh $NAMENODE1 "mkdir -p $NAMENODE_DIR"
@@ -41,6 +41,6 @@ ssh $NAMENODE1 "$HDFS_COMMAND namenode -format -clusterId $CLUSTERID"
 ssh $NAMENODE2 "$HDFS_COMMAND namenode -bootstrapStandby"
 
 #4.启动namenode以及zkfc
-ssh $NAMENODE1 "$HDOOP_DAEMON start namenode && $HDOOP_DAEMON start zkfc"
-ssh $NAMENODE2 "$HDOOP_DAEMON start namenode && $HDOOP_DAEMON start zkfc"
+ssh $NAMENODE1 "$HDOOP_DAEMON start namenode"
+ssh $NAMENODE2 "$HDOOP_DAEMON start namenode"
 
