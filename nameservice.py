@@ -132,6 +132,7 @@ class nameservice:
 
     #进行删除ns操作前进行检查
     def removeprecheck(self,parser):
+        nameservice = parser.ns
         if nameservice is None:
             log.warn('输入的参数有无，必须使用-ns输入nameservicer名称')
             return Process.FAIL     
