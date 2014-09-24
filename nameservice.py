@@ -84,7 +84,7 @@ class nameservice:
         if self.addprecheck(nameservice,namenode1,namenode2) == Process.SUCCESS:            
             #在conf文件夹下创建新nn的文件夹
             newnsdir = "conf/"+nameservice
-            log.info("正在创建"+newnsdir)
+            log.warn("正在创建"+newnsdir)
             runshcommand('mkdir -p '+newnsdir)
             hdfsconf = self.nnconf.get()
             #增加nameservicers
@@ -104,6 +104,7 @@ class nameservice:
             self.nnconf.setdt(hdfsconf)
             newhdfsconf.setdt(hdfsconf)
             #1.分发配置
+            log.warn("addnameservice：1.分发配置")
             namenodehosts = [namenode1,namenode2]
             scpfile = self.namenodefile
             datanodefile = self.datanodefile
@@ -117,11 +118,12 @@ class nameservice:
             log.info('1.分发文件:'+scpfile)
             runshcommand('bash sshhandle.sh '+args)
             #2.如果原来的集群有 namenode 的文件夹，则进行备份,并且format新的namenode
-            log.info('2.备份原有的namnode文件夹')
+            log.warn("addnameservice：2.备份原有的namnode文件夹")
             namenodedir = hdfsconf['dfs.namenode.name.dir']['value']
             args = ' '.join([self.hadoopdir,namenodedir,self.clusterid,namenode1,namenode2])
             runshcommand('bash wkforstartnn.sh '+args)
             #3.刷新所有的datanode，让datanode向新的namenode发送心跳
+            log.warn("addnameservice：3.刷新所有的datanode，让datanode向新的namenode发送心跳")
             datanodehosts=[]
             with open(datanodefile) as f:
                 datanodehosts = f.read().split('\n')
@@ -157,7 +159,7 @@ class nameservice:
         originns = hdfsconf['dfs.nameservices']['value'].split(',')
         namenodes = hdfsconf['dfs.ha.namenodes.'+nameservice]['value'].split(',')
         namenodehosts = [ hdfsconf['dfs.namenode.rpc-address.'+nameservice+'.'+x]['value'].split(':')[0] for x in namenodes ]
-        log.info('1.删除dfs.nameservice以及hdfs.ha.namenode配置')
+        log.warn('1.删除dfs.nameservice以及hdfs.ha.namenode配置')
         #1.删除dfs.nameservices以及dfs.ha.namenode配置
         originns.remove(nameservice)
         hdfsconf['dfs.nameservices']['value'] = ','.join(originns)
@@ -165,25 +167,25 @@ class nameservice:
             del hdfsconf['dfs.ha.namenodes.'+nameservice]
         if hdfsconf.get('dfs.client.failover.proxy.provider.'+nameservice,None) is not None:
             del hdfsconf['dfs.client.failover.proxy.provider.'+nameservice]
-        log.info("2.删除http-adrees以及rpc-adress")
+        log.warn("2.删除http-adrees以及rpc-adress")
         #2.删除http-adrees以及rpc-adress
         for x in list(set(namenodes)):
             if hdfsconf.get('dfs.namenode.rpc-address.'+nameservice+'.'+x,None) is not None:
                 del hdfsconf['dfs.namenode.rpc-address.'+nameservice+'.'+x] 
             if hdfsconf.get('dfs.namenode.http-address.'+nameservice+'.'+x,None) is not None:
                 del hdfsconf['dfs.namenode.http-address.'+nameservice+'.'+x]
-        log.info("3.删除文件夹")
+        log.warn("3.删除文件夹")
         #3.删除文件夹
         if os.path.isdir('conf/'+nameservice):
             runshcommand('/bin/rm -r conf/'+nameservice)
-        log.info("4.将文件传输到各个节点")
+        log.warn("4.将文件传输到各个节点")
         #4.将文件传输到各个节点
         self.nnconf.setdt(hdfsconf)
         scpfile = self.namenodefile
         datanodefile = self.datanodefile
         hadoopconfdir = self.hadoopdir+'/etc/hadoop/'
         hosts = []
-        log.info("5.找出需要传输的节点")
+        log.warn("5.找出需要传输的节点")
         #5.找出需要传输的节点
         with open(datanodefile) as f:
             hosts = f.read().split('\n')
@@ -191,11 +193,11 @@ class nameservice:
         hosts = list(set(hosts))
         args = ' '.join([hadoopconfdir,scpfile]+hosts) #构造参数
         runshcommand('bash sshhandle.sh '+args)
-        log.info("6.停止namenode以及zkfc")
+        log.warn("6.停止namenode以及zkfc")
         #6.停止namenode以及zkfc
         args = ' '.join([self.hadoopdir,'stop']+namenodehosts)
         runshcommand('bash nnzkfc.sh '+args)
-        log.info("7.刷新datanode")
+        log.warn("7.刷新datanode")
         #7.刷新datanode
         datanodehosts=[]
         with open(datanodefile) as f:
