@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #至少需要輸入兩個參數，第一个参数为hadoop的目录，剩余的参数为datanode的host
-if [ $# -lt 2 ]; then
+if [ $# -lt 3 ]; then
     echo "至少需要输入三个以上的参数"
     exit 1
 fi

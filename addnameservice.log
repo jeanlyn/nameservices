@@ -44,3 +44,11 @@
 2014-09-23 20:03:09,055 addnameservice.py[line:37] INFO getting namenodefile: conf/namenode/hdfs-site.xml
 2014-09-23 20:03:18,395 addnameservice.py[line:37] INFO getting namenodefile: conf/namenode/hdfs-site.xml
 2014-09-23 20:03:18,395 addnameservice.py[line:80] WARNING 输入的参数有误！使用 addns -h 查看具体使用
+2014-09-24 09:27:18,764 addnameservice.py[line:37] INFO getting namenodefile: conf/namenode/hdfs-site.xml
+2014-09-24 09:27:18,773 addnameservice.py[line:224] ERROR 'bool' object is not iterable
+2014-09-24 09:27:32,416 addnameservice.py[line:37] INFO getting namenodefile: conf/namenode/hdfs-site.xml
+2014-09-24 09:27:56,715 addnameservice.py[line:37] INFO getting namenodefile: conf/namenode/hdfs-site.xml
+2014-09-24 09:41:02,107 addnameservice.py[line:37] INFO getting namenodefile: conf/namenode/hdfs-site.xml
+2014-09-24 09:41:42,973 addnameservice.py[line:37] INFO getting namenodefile: conf/namenode/hdfs-site.xml
+2014-09-24 10:54:33,888 nameservice.py[line:38] INFO getting namenodefile: conf/namenode/hdfs-site.xml
+2014-09-24 10:55:24,217 nameservice.py[line:38] INFO getting namenodefile: conf/namenode/hdfs-site.xml
