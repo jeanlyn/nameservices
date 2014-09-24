@@ -26,9 +26,9 @@ HDFS_COMMAND=$HADOOP_HOME/bin/hdfs
 
 SUFFIX = `date +'%Y%m%d%H%M'`
 #1.备份NAMENODE DIR
-ssh $NAMENODE1 "if [ -d $NAMENODE_DIR ];then mv ${NAMENODE_DIR} ${NAMENODE_DIR}_${SUFFIX} fi"
+ssh $NAMENODE1 "if [ -d $NAMENODE_DIR ];then cp -r ${NAMENODE_DIR} ${NAMENODE_DIR}_${SUFFIX} fi"
 
-ssh $NAMENODE1 "if [ -d $NAMENODE_DIR ];then mv ${NAMENODE_DIR} ${NAMENODE_DIR}_${SUFFIX} fi"
+ssh $NAMENODE1 "if [ -d $NAMENODE_DIR ];then cp -r ${NAMENODE_DIR} ${NAMENODE_DIR}_${SUFFIX} fi"
 
 #2.创建 NAMENODE_DIR
 ssh $NAMENODE1 "mkdir -p $NAMENODE_DIR"

@@ -133,6 +133,7 @@ class nameservice:
             datanoderpcprot = self.datanoderpcprot
             args = ' '.join([self.hadoopdir,datanoderpcprot]+datanodehosts)
             runshcommand('bash refreshnn.sh '+args)
+            log.warn("add success!")
 
 
     #进行删除ns操作前进行检查
