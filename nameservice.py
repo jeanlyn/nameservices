@@ -81,6 +81,7 @@ class nameservice:
         namenode1 = parser.nn1
         namenode2 = parser.nn2
         nnname = ['nn1','nn2']
+        nnhost = [namenode1,namenode2]
         if nameservice is None or namenode1 is None or namenode2 is None:
             log.warn('输入的参数有误！使用 addns -h 查看具体使用')
             return Process.FAIL   
@@ -95,9 +96,9 @@ class nameservice:
             #增加namenode
             hdfsconf['dfs.ha.namenodes.'+nameservice] = {'value':','.join(nnname)}
             #设置rpc地址以及http地址
-            for x in nnname:
-                hdfsconf['.'.join(['dfs.namenode.rpc-address',nameservice,x])]={'value':x+':'+nnrpcport}
-                hdfsconf['.'.join(['dfs.namenode.http-address',nameservice,x])]={'value':x+':'+nnhttpport}
+            for n,v in zip(nnname,nnhost):
+                hdfsconf['.'.join(['dfs.namenode.rpc-address',nameservice,x])]={'value':v+':'+nnrpcport}
+                hdfsconf['.'.join(['dfs.namenode.http-address',nameservice,x])]={'value':v+':'+nnhttpport}
             #设置share.edit.dir:一般形式为qjournal://host1:8485,host2:8485/nameservice
             hdfsconf['dfs.namenode.shared.edits.dir']={'value':'/'.join(hdfsconf['dfs.namenode.shared.edits.dir']['value'].split('/')[:-1]+[nameservice])}
             hdfsconf['dfs.client.failover.proxy.provider.'+nameservice] ={'value':self.clientproxy}
