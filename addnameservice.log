@@ -52,3 +52,7 @@
 2014-09-24 09:41:42,973 addnameservice.py[line:37] INFO getting namenodefile: conf/namenode/hdfs-site.xml
 2014-09-24 10:54:33,888 nameservice.py[line:38] INFO getting namenodefile: conf/namenode/hdfs-site.xml
 2014-09-24 10:55:24,217 nameservice.py[line:38] INFO getting namenodefile: conf/namenode/hdfs-site.xml
+2014-09-24 14:01:24,853 nameservice.py[line:38] INFO getting namenodefile: conf/namenode/hdfs-site.xml
+2014-09-24 14:02:22,627 nameservice.py[line:38] INFO getting namenodefile: conf/namenode/hdfs-site.xml
+2014-09-24 14:02:22,628 nameservice.py[line:58] WARNING BJHC-BIGDATA-TEST-17865.jd.com或者BJHC-BIGDATA-TEST-17866.jd.com已经存在！
+2014-09-24 14:02:44,604 nameservice.py[line:38] INFO getting namenodefile: conf/namenode/hdfs-site.xml
