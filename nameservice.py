@@ -140,7 +140,7 @@ class nameservice:
             log.warn("add success!,starting zkfc.....")
 
             args = ' '.join([self.hadoopdir,'start']+nnhost)
-            runinteractiveshell('bash refreshnn.sh '+args)
+            runinteractiveshell('bash zkfc.sh '+args)
             log.warn("finish!")
 
 
