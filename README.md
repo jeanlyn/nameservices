@@ -1,16 +1,12 @@
 #简介
 该脚本的主要作用是用于比较方便为已经运行的集群添加nameservicer
 
-***
-
 #功能
 -   增加nameservice
 -   删除nameservice
 -   查看配置文件里配置的nameserver
 -   查看配置文件里已经配置的namenode
 -   根据输入查找hdfs-site.xml配置里面相应的内容
-
-***
 
 #主要功能的操作步骤
 ##增加nameservice
@@ -48,8 +44,8 @@
 2.**cluster_id**为现有集群的id,可以在namenode的**dfs.namenode.name.dir/current/VERSION**下查看
 
     cat VERSION
-        **namespaceID=318050901**
-        clusterID=ns1
+        namespaceID=318050901
+        **clusterID=ns1**
         cTime=0
         storageType=NAME_NODE
         blockpoolID=BP-569750865-172.22.178.63-1410918673402
@@ -69,7 +65,7 @@
 
 2.删除nameservice
 
-    ./nameservice.py rmns
+    ./nameservice.py rmns -ns `nsname`
 
 3.查看配置文件里配置的nameserver
 

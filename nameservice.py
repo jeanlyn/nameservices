@@ -137,8 +137,11 @@ class nameservice:
             datanoderpcprot = self.datanoderpcprot
             args = ' '.join([self.hadoopdir,datanoderpcprot]+datanodehosts)
             runshcommand('bash refreshnn.sh '+args)
+            log.warn("add success!,starting zkfc.....")
 
-            log.warn("add success!,you need to start zkfc manually")
+            args = ' '.join([self.hadoopdir,'start']+nnhost)
+            runinteractiveshell('bash refreshnn.sh '+args)
+            log.warn("finish!")
 
 
     #进行删除ns操作前进行检查
